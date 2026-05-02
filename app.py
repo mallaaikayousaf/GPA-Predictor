@@ -76,7 +76,6 @@ ax.barh(importance_df['Feature'], importance_df['Importance'])
 ax.set_xlabel('Importance')
 st.pyplot(fig)
 
-# ========== FIXED SHAP SECTION ==========
 st.subheader("🔍 Why This Prediction?")
 
 # Calculate SHAP values
@@ -85,7 +84,7 @@ shap_values = explainer.shap_values(input_data)
 # Create waterfall plot
 fig2, ax2 = plt.subplots(figsize=(10, 5))
 
-# FIX: Use plt.figure() and then convert to st.pyplot
+#Use plt.figure() and then convert to st.pyplot
 waterfall_plot = shap.waterfall_plot(
     shap.Explanation(
         values=shap_values[0],
@@ -96,7 +95,6 @@ waterfall_plot = shap.waterfall_plot(
     show=False
 )
 
-# IMPORTANT FIX: Get the current figure
 fig2 = plt.gcf()
 st.pyplot(fig2)
 
